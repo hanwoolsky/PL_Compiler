@@ -1,0 +1,10 @@
+func(){
+  char a;
+  int b = 0;
+  int c = 1;
+  IF (b > 8) THEN{
+    b = a + 1;
+  }ELSE{
+    b = a - 1;
+  }
+}

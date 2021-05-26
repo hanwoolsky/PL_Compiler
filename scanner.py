@@ -1,0 +1,20 @@
+b = [];
+file = open('test.txt', 'r')
+a = file.read()
+# cs = list(a)
+# for c in cs:
+#   print (c)
+a = a.replace('\n', ' ')
+#print(a)
+a = a.replace('    ', ' ')
+a = a.replace('   ', ' ')
+a = a.replace('  ', ' ')
+#print(a)
+#print(c)
+a = a.replace(';', ' ;')
+a = a.replace('{', ' {')
+a = a.replace('}', ' }')
+a = a.replace('(', ' (')
+a = a.replace(')', ' )')
+b = a.split(' ')
+print(b);
