@@ -1,20 +1,27 @@
-b = [];
-file = open('test.txt', 'r')
-a = file.read()
-# cs = list(a)
-# for c in cs:
-#   print (c)
-a = a.replace('\n', ' ')
-#print(a)
-a = a.replace('    ', ' ')
-a = a.replace('   ', ' ')
-a = a.replace('  ', ' ')
-#print(a)
-#print(c)
-a = a.replace(';', ' ;')
-a = a.replace('{', ' {')
-a = a.replace('}', ' }')
-a = a.replace('(', ' (')
-a = a.replace(')', ' )')
-b = a.split(' ')
-print(b);
+import re
+
+class Scanner:
+    
+    def __init__(self,target):
+
+        self.f = open(target, "r")
+        self.code = self.f.read()
+        self.tokenzer()
+
+
+    def tokenzer(self):
+
+        self.code = self.code.replace("(", " ( ")
+        self.code = self.code.replace(")", " ) ")
+        self.code = self.code.replace("{", " { ")
+        self.code = self.code.replace("}", " } ")
+        self.code = self.code.replace(";", " ; ")
+        self.code = self.code.replace("+", " + ")
+        self.code = self.code.replace(">", " > ")
+        self.code = self.code.replace("IF", " IF ")
+        self.code = self.code.replace("THEN", " THEN ")
+        self.code = self.code.replace("ELSE", " ELSE ")
+        self.code = self.code.replace("EXIT", " EXIT ")
+
+        self.tokens = self.code.split()
+
