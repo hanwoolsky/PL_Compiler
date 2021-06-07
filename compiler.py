@@ -9,7 +9,8 @@ print('.' + tokens[0].upper() + ':')
 count = 0
 index = 0
 vtypeFlag = 0
-#register.get(tokens[index-1])
+plus = 0
+plusindex = 0
 
 for parse in tokens:
   if vtypeFlag == 1 :
@@ -18,8 +19,30 @@ for parse in tokens:
   if parse == "int" or parse == "char" :
     vtypeFlag = 1
     count += 1
-  if parse == '=':
-    if tokens[index+2] != '+' and tokens[index+2] != '-':
-      print("    ADD $" + tokens[index-1] + " $0 $" + tokens[index+1])
-
+  elif parse == '=':
+    if tokens[index+2] != '+' and tokens[index+2] != '-': #선언 initialize
+      print("    ADD $t", end='')
+      print(register.get(tokens[index-1]), end='')
+      print(" $0 $" + tokens[index+1])
+    else: #expr
+      plusindex = index
+      while(tokens[plusindex] != ';'):
+        plusindex += 1
+        if tokens[plusindex] == '-':
+          tokens[plusindex] = '+'
+          tokens[plusindex + 1] = '-' + tokens[plusindex + 1]
+        if tokens[plusindex] == '+' or tokens[plusindex] == '-':
+          plus += 1
+      while(plus):
+        plus -= 1 #다른 선언으로
+        print("    ADD $t", end='')
+        print(register.get(tokens[index-1]), end='')
+        print(" $" + tokens[index+1] + " $" + tokens[index+3])
+      plus = 0
+  elif parse == "IF":
+    print("    LT $t")
+    print("    JUMPF $t")
+  elif parse == "ELSE":
+    print(".ELSE")
+  
   index += 1
