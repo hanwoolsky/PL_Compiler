@@ -23,7 +23,11 @@ for parse in tokens:
     if tokens[index+2] != '+' and tokens[index+2] != '-': #선언 initialize
       print("    ADD $t", end='')
       print(register.get(tokens[index-1]), end='')
-      print(" $0 $" + tokens[index+1])
+      if tokens[index+1].isalpha() == True:
+        print(" $0 $t", end = '')
+        print(register.get(tokens[index+1]))
+      else:
+        print(" $0 $" + tokens[index+1])
     else: #expr
       plusindex = index
       while(tokens[plusindex] != ';'):
