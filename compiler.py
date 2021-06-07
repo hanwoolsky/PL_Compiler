@@ -18,9 +18,8 @@ for parse in tokens:
   if parse == "int" or parse == "char" :
     vtypeFlag = 1
     count += 1
-  if parse == '=' and tokens[index+2] != '+':
-    print("    ADD $" + tokens[index-1] + " $0 $" + tokens[index+1])
+  if parse == '=':
+    if tokens[index+2] != '+' and tokens[index+2] != '-':
+      print("    ADD $" + tokens[index-1] + " $0 $" + tokens[index+1])
 
   index += 1
-
-print(register)
