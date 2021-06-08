@@ -4,7 +4,7 @@ scanner = Scanner('test.txt')
 tokens = scanner.tokens
 
 register = {}
-print('.' + tokens[0].upper() + ':')
+print('BEGIN ' + tokens[0].upper())
 
 count = 0
 index = 0
@@ -96,3 +96,8 @@ for parse in tokens:
     print(".ELSE")
   
   index += 1
+
+print('END' + tokens[0].upper())
+
+print("number of register: ", end='')
+print(count)
