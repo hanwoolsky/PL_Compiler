@@ -41,14 +41,27 @@ for parse in tokens:
         print("    ADD $t", end='')
         count+=1
         print(count, end='')
-        print(" $" + tokens[index+1] + " $" + tokens[index+3])
+        if tokens[index+1].isalpha() == True:
+          print(" $t", end = '')
+          print(register.get(tokens[index+1]), end = '')
+        else:
+          print(" $" + tokens[index+1], end = '')
+        if tokens[index+3].isalpha() == True:
+          print(" $t", end = '')
+          print(register.get(tokens[index+3]))
+        else:
+          print(" $" + tokens[index+3])
         if plus > 2:
           print("    ADD $t", end='')
           count+=1
           print(count, end='')
           print(" $t", end='')
           print(count-1, end='')
-          print(" $" + tokens[index+5])
+          if tokens[index+5].isalpha() == True:
+            print(" $t", end='')
+            print(register.get(tokens[index+5]))
+          else:
+            print(" $" + tokens[index+5])
         if plus > 3 :
           for i in range(plus-3):
             print("    ADD $t", end='')
@@ -56,7 +69,11 @@ for parse in tokens:
             print(count, end='')
             print(" $t", end='')
             print(count-1, end='')
-            print(" $" + tokens[index+2*i+5])
+            if tokens[index+2*i+5].isalpha() == True:
+              print(" $t", end='')
+              print(register.get(tokens[index+2*i+5]))
+            else:
+              print(" $" + tokens[index+2*i+5])
         print("    ADD $t", end='')
         print(register.get(tokens[index-1]), end='')
         print(" $t", end = '')
