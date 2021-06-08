@@ -18,6 +18,7 @@ class Scanner:
         self.code = self.code.replace(";", " ; ")
         self.code = self.code.replace("+", " + ")
         self.code = self.code.replace(">", " > ")
+        self.code = self.code.replace("=", " = ")
         self.code = self.code.replace("IF", " IF ")
         self.code = self.code.replace("THEN", " THEN ")
         self.code = self.code.replace("ELSE", " ELSE ")
