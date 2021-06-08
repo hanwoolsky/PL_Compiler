@@ -25,4 +25,3 @@ class Scanner:
         self.code = self.code.replace("EXIT", " EXIT ")
 
         self.tokens = self.code.split()
-

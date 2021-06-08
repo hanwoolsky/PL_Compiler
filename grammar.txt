@@ -1,0 +1,12 @@
+prog ->	word ( ) block 
+decls -> decls decl | ϵ
+decl -> vtype word ; 
+vtype -> int | char | ϵ
+block -> { decls slist } | ϵ
+slist -> slist stat | stat 
+stat -> IF cond THEN block ELSE block | word = expr ; | EXIT expr ; | ϵ
+cond -> expr > expr 
+expr -> expr + fact | fact 	
+fact ->	num | word 
+word -> ([a-z]|[A-Z])* 
+num	-> [0-9]*

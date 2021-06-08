@@ -1,0 +1,10 @@
+BEGIN FUNC
+    ADD $t2 $0 $0
+    ADD $t3 $0 $1
+    LT $t4
+    JUMPF $t4 ELSE
+    ADD $t2 $a $1
+.ELSE
+    ADD $t2 $a $-1
+ENDFUNC
+number of register: 4
