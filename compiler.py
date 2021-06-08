@@ -44,8 +44,11 @@ for parse in tokens:
         print(" $" + tokens[index+1] + " $" + tokens[index+3])
       plus = 0
   elif parse == "IF":
-    print("    LT $t")
-    print("    JUMPF $t")
+    print("    LT $t", end='')
+    print(count+1)
+    print("    JUMPF $t", end = '')
+    print(count+1, end = '')
+    print(" ELSE")
   elif parse == "ELSE":
     print(".ELSE")
   
