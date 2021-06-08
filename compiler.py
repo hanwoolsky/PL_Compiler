@@ -37,17 +37,43 @@ for parse in tokens:
           tokens[plusindex + 1] = '-' + tokens[plusindex + 1]
         if tokens[plusindex] == '+' or tokens[plusindex] == '-':
           plus += 1
-      while(plus):
-        plus -= 1 #다른 선언으로
+      if plus > 1:
+        print("    ADD $t", end='')
+        count+=1
+        print(count, end='')
+        print(" $" + tokens[index+1] + " $" + tokens[index+3])
+        if plus > 2:
+          print("    ADD $t", end='')
+          count+=1
+          print(count, end='')
+          print(" $t", end='')
+          print(count-1, end='')
+          print(" $" + tokens[index+5])
+        if plus > 3 :
+          for i in range(plus-3):
+            print("    ADD $t", end='')
+            count+=1
+            print(count, end='')
+            print(" $t", end='')
+            print(count-1, end='')
+            print(" $" + tokens[index+2*i+5])
+        print("    ADD $t", end='')
+        print(register.get(tokens[index-1]), end='')
+        print(" $t", end = '')
+        print(count, end = '')
+        print(" $", end = '')
+        print(tokens[index+2*plus+1])
+      else:
         print("    ADD $t", end='')
         print(register.get(tokens[index-1]), end='')
         print(" $" + tokens[index+1] + " $" + tokens[index+3])
       plus = 0
   elif parse == "IF":
     print("    LT $t", end='')
-    print(count+1)
+    count+=1
+    print(count)
     print("    JUMPF $t", end = '')
-    print(count+1, end = '')
+    print(count, end = '')
     print(" ELSE")
   elif parse == "ELSE":
     print(".ELSE")
